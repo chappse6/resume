@@ -53,6 +53,8 @@
   .ed-degree{font-size:15px;font-weight:600;letter-spacing:-0.01em;}
   .ed-org{font-size:12.5px;color:#111;white-space:nowrap;}
   .cert-name{font-size:14px;font-weight:600;letter-spacing:-0.01em;margin-top:1px;}
+  .cert-name a{color:#111;border-bottom:1px solid #cfcfca;}
+  .cert-name a:hover{color:#555;}
   .sk-cat{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:15px;font-weight:600;letter-spacing:-0.01em;margin-bottom:7px;}
   .sk-dots{display:inline-flex;gap:4px;flex:none;}
   .sk-dots i{width:7px;height:7px;border-radius:50%;background:#dcdcd8;}
@@ -176,8 +178,8 @@ const DATA = {
       { period: "2017.12 – 2018.07", place: "서울", degree: "하이브리드 SW 전문가과정 28기", org: "JSL 인재개발원" }
     ],
     certifications: [
-      { year: "2026", name: "AWS Certified Developer – Associate", org: "Amazon Web Services (AWS)" },
-      { year: "2026.05", name: "Model Context Protocol: Advanced Topics", org: "Anthropic" },
+      { year: "2026", name: "AWS Certified Developer – Associate", org: "Amazon Web Services (AWS)", href: "https://www.credly.com/badges/046b2d8e-af9a-4ad8-8758-0bf0d7e02454/public_url" },
+      { year: "2026.05", name: "Model Context Protocol: Advanced Topics", org: "Anthropic", href: "https://verify.skilljar.com/c/2vjbrad79cv2" },
       { year: "2018", name: "정보처리기사 · 정보처리산업기사", org: "한국산업인력공단" }
     ],
     skills: [
@@ -211,8 +213,8 @@ const DATA = {
       { period: "2017.12 – 2018.07", place: "Seoul", degree: "Hybrid Software Expert Course #28", org: "JSL Academy" }
     ],
     certifications: [
-      { year: "2026", name: "AWS Certified Developer – Associate", org: "Amazon Web Services (AWS)" },
-      { year: "2026.05", name: "Model Context Protocol: Advanced Topics", org: "Anthropic" },
+      { year: "2026", name: "AWS Certified Developer – Associate", org: "Amazon Web Services (AWS)", href: "https://www.credly.com/badges/046b2d8e-af9a-4ad8-8758-0bf0d7e02454/public_url" },
+      { year: "2026.05", name: "Model Context Protocol: Advanced Topics", org: "Anthropic", href: "https://verify.skilljar.com/c/2vjbrad79cv2" },
       { year: "2018", name: "Engineer · Industrial Engineer Info. Processing", org: "HRDK" }
     ],
     skills: [
@@ -246,8 +248,8 @@ const DATA = {
       { period: "2017.12 – 2018.07", place: "ソウル", degree: "ハイブリッドSW専門家課程 28期", org: "JSL人材開発院" }
     ],
     certifications: [
-      { year: "2026", name: "AWS Certified Developer – Associate", org: "Amazon Web Services (AWS)" },
-      { year: "2026.05", name: "Model Context Protocol: Advanced Topics", org: "Anthropic" },
+      { year: "2026", name: "AWS Certified Developer – Associate", org: "Amazon Web Services (AWS)", href: "https://www.credly.com/badges/046b2d8e-af9a-4ad8-8758-0bf0d7e02454/public_url" },
+      { year: "2026.05", name: "Model Context Protocol: Advanced Topics", org: "Anthropic", href: "https://verify.skilljar.com/c/2vjbrad79cv2" },
       { year: "2018", name: "情報処理技士 · 情報処理産業技士", org: "HRDK" }
     ],
     skills: [
@@ -482,11 +484,16 @@ function render() {
       <div class="head-row"><span class="ed-degree">${esc(ed.degree)}</span><span class="ed-org">${esc(ed.org)}</span></div>
     </div>`).join("");
 
-  const certifications = t.certifications.map(c => `
+  const certifications = t.certifications.map(c => {
+    const name = c.href
+      ? `<a href="${esc(c.href)}" target="_blank" rel="noopener">${esc(c.name)}</a>`
+      : esc(c.name);
+    return `
     <div style="margin-bottom:11px;">
       <div class="meta-row"><span>${esc(c.year)}</span><span>${esc(c.org)}</span></div>
-      <div class="cert-name">${esc(c.name)}</div>
-    </div>`).join("");
+      <div class="cert-name">${name}</div>
+    </div>`;
+  }).join("");
 
   const dots = n => `<span class="sk-dots">${Array.from({length:5},(_,i)=>`<i class="${i<n?"on":""}"></i>`).join("")}</span>`;
   const skills = t.skills.map(s => `
