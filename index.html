@@ -81,6 +81,15 @@
   .par{display:grid;grid-template-columns:76px 1fr;gap:5px 12px;font-size:12.5px;line-height:1.5;}
   .par b{font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:#9a9a96;font-weight:600;padding-top:2px;}
   .par span{color:#333;}
+  .side-item{margin-bottom:15px;break-inside:avoid;}
+  .side-item:last-child{margin-bottom:0;}
+  .side-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;}
+  .side-title{font-size:14px;font-weight:600;letter-spacing:-0.01em;}
+  .side-title a{color:#111;border-bottom:1px solid #cfcfca;}
+  .side-title a:hover{color:#555;}
+  .side-meta{font-size:12px;color:#9a9a96;white-space:nowrap;}
+  .side-desc{font-size:12.5px;line-height:1.55;color:#404040;margin-top:5px;}
+  .blog-note{font-size:12.5px;color:#404040;margin-top:16px;padding-top:13px;border-top:1px dashed #dcdcd8;}
   .page2{break-before:page;}
 
   /* carousel */
@@ -297,7 +306,16 @@ const DETAIL = {
         a: "고객별 포인트 관리 기능을 설계하고 단위·통합테스트 기반의 안정성 확보를 우선했습니다.",
         c: "고객별 포인트 정보 관리 기능 개발, 테스트 작성, 유지보수·장애 지원을 담당했습니다.",
         r: "카드사 연동 포인트 조회 기능의 안정적 운영." }
-    ]
+    ],
+    sideLabel: "사이드 프로젝트 · 활동",
+    side: [
+      { title: "api-flow — Claude Code 스킬", meta: "2026 · 사내 사용 중",
+        desc: "웹 화면 요소의 동작과 API 호출을 추적해 MSA 서비스 간 호출 흐름을 시퀀스 다이어그램으로 자동 시각화. 사내 개발·리뷰 워크플로우에 적용해 구조 파악 시간을 단축했습니다." },
+      { title: "Read Tracker — Chrome 확장프로그램", meta: "Chrome 웹스토어 게시",
+        href: "https://chromewebstore.google.com/detail/read-tracker/jgolehhngmpokfjpegicibkoejikcbch",
+        desc: "읽은 콘텐츠를 추적·관리하는 브라우저 확장 프로그램. 기획부터 개발·배포까지 단독으로 수행해 웹스토어에 정식 등록·운영 중입니다." }
+    ],
+    blogNote: "기술 블로그 운영 중 — 학습·트러블슈팅 과정 기록 · parse.tistory.com"
   },
   en: {
     tag: "Details", copy: "A developer who defines the problem, weighs the solution, and proves it with numbers",
@@ -343,7 +361,16 @@ const DETAIL = {
         a: "Designed per-customer point management, prioritizing stability via unit/integration tests.",
         c: "Developed the point-management feature, wrote tests, and handled maintenance and incident support.",
         r: "Stable operation of card-issuer rebate-point lookups." }
-    ]
+    ],
+    sideLabel: "Side Projects · Activities",
+    side: [
+      { title: "api-flow — Claude Code Skill", meta: "2026 · In internal use",
+        desc: "Traces UI element behavior and API calls to auto-generate sequence diagrams of cross-service MSA flows. Adopted in the internal dev and review workflow, cutting the time to grasp system structure." },
+      { title: "Read Tracker — Chrome Extension", meta: "Published on Chrome Web Store",
+        href: "https://chromewebstore.google.com/detail/read-tracker/jgolehhngmpokfjpegicibkoejikcbch",
+        desc: "A browser extension to track and manage reading. Solo-built end to end — from concept to development and release — and published on the Web Store." }
+    ],
+    blogNote: "Runs a tech blog — documenting learnings and troubleshooting · parse.tistory.com"
   },
   ja: {
     tag: "Details", copy: "課題を定義し、解決策を検討し、数値で証明する開発者",
@@ -389,7 +416,16 @@ const DETAIL = {
         a: "顧客別のポイント管理機能を設計し、単体・結合テストによる安定性確保を優先しました。",
         c: "顧客別ポイント情報管理機能の開発、テスト作成、保守・障害対応を担当しました。",
         r: "カード会社連携のポイント照会機能を安定運用。" }
-    ]
+    ],
+    sideLabel: "サイドプロジェクト · 活動",
+    side: [
+      { title: "api-flow — Claude Code スキル", meta: "2026 · 社内利用中",
+        desc: "web画面要素の動作とAPI呼び出しを追跡し、MSAサービス間の呼び出しフローをシーケンス図として自動可視化。社内の開発・レビューワークフローに適用し、構造把握の時間を短縮しました。" },
+      { title: "Read Tracker — Chrome拡張機能", meta: "Chromeウェブストア公開",
+        href: "https://chromewebstore.google.com/detail/read-tracker/jgolehhngmpokfjpegicibkoejikcbch",
+        desc: "読了コンテンツを追跡・管理するブラウザ拡張。企画から開発・公開まで単独で担当し、ウェブストアに正式公開・運用中です。" }
+    ],
+    blogNote: "技術ブログ運営中 — 学習・トラブルシューティングの記録 · parse.tistory.com"
   }
 };
 
@@ -507,10 +543,26 @@ function render() {
 
   const p3 = document.getElementById("paper3");
   p3.style.fontFamily = FONTS[state.font];
+  const sideItems = (d.side || []).map(s => {
+    const title = s.href
+      ? `<a href="${esc(s.href)}" target="_blank" rel="noopener">${esc(s.title)}</a>`
+      : esc(s.title);
+    return `
+    <div class="side-item">
+      <div class="side-head"><span class="side-title">${title}</span><span class="side-meta">${esc(s.meta)}</span></div>
+      <div class="side-desc">${esc(s.desc)}</div>
+    </div>`;
+  }).join("");
+  const sideBlock = (d.side && d.side.length) ? `
+    <div class="rule" style="margin:28px 0 7px;"></div>
+    <div class="sec-label" style="margin-bottom:14px;">${esc(d.sideLabel)}</div>
+    ${sideItems}
+    ${d.blogNote ? `<div class="blog-note">${esc(d.blogNote)}</div>` : ""}` : "";
   p3.innerHTML = `
     <div class="rule" style="margin-bottom:7px;"></div>
     <div class="sec-label" style="margin-bottom:16px;">${esc(d.projLabel)}</div>
-    ${details}`;
+    ${details}
+    ${sideBlock}`;
 
   document.querySelectorAll("#langSeg button").forEach(b => b.className = b.dataset.lang === state.lang ? "on" : "off");
   document.documentElement.lang = state.lang;
