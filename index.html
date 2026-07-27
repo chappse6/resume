@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>박세은 · 웹 개발자 이력서</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css">
+<style>
+  html,body{margin:0;background:#e9e9e7;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+  *{box-sizing:border-box;text-wrap:pretty;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  a{color:#111;text-decoration:none;}
+  a:hover{color:#555;}
+  button{border:none;cursor:pointer;font-size:13px;padding:6px 14px;border-radius:999px;
+    font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;transition:all .15s;}
+  .seg{display:flex;gap:4px;background:#fff;border:1px solid #dcdcd8;border-radius:999px;padding:4px;}
+  .on{background:#111;color:#fff;}
+  .off{background:transparent;color:#111;}
+  .toolbar-label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8a8a86;}
+
+  /* resume paper */
+  .paper{width:794px;min-height:1123px;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.10);
+    padding:52px 44px 30px;display:flex;flex-direction:column;}
+  .contact-row{display:flex;justify-content:space-between;font-size:13px;color:#111;padding-bottom:14px;flex-wrap:wrap;gap:8px;border-bottom:1px solid #e4e4e0;}
+  .hero{position:relative;min-height:230px;display:flex;align-items:flex-end;padding-top:30px;}
+  .photo{position:absolute;bottom:0;right:0;width:152px;height:190px;overflow:hidden;border-radius:2px;
+    background:#f0f0ee;display:flex;align-items:center;justify-content:center;color:#b5b5b0;font-size:14px;}
+  .photo img{width:100%;height:100%;object-fit:cover;}
+  .name{font-size:44px;font-weight:400;letter-spacing:-0.025em;line-height:1;}
+  .title{font-size:19px;font-weight:400;color:#9a9a96;margin-top:10px;}
+  .rule{height:1px;background:#111;}
+  .sec-label{font-size:13px;color:#9a9a96;}
+
+  /* company groups with light top rule */
+  .grp{margin-bottom:10px;}
+  .grp:last-child{margin-bottom:0;}
+  .grp-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+    margin-bottom:18px;}
+  .grp + .grp .grp-head{border-top:1px solid #ebebe8;padding-top:12px;}
+  .grp-co{font-size:17px;font-weight:600;letter-spacing:-0.01em;}
+  .grp-meta{font-size:12.5px;color:#9a9a96;white-space:nowrap;}
+  .proj{display:grid;grid-template-columns:104px 1fr;gap:18px;margin-bottom:9px;}
+  .proj:last-child{margin-bottom:0;}
+  .proj-period{font-size:12px;color:#9a9a96;padding-top:2px;}
+  .proj-title{font-size:16px;font-weight:600;letter-spacing:-0.01em;}
+  .proj-desc{font-size:12.5px;line-height:1.55;color:#404040;margin-top:6px;}
+
+  /* bottom two-column: edu+cert | skills */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:24px;}
+  .meta-row{display:flex;justify-content:space-between;font-size:12.5px;color:#9a9a96;}
+  .head-row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-top:1px;}
+  .ed-degree{font-size:15px;font-weight:600;letter-spacing:-0.01em;}
+  .ed-org{font-size:12.5px;color:#111;white-space:nowrap;}
+  .cert-name{font-size:14px;font-weight:600;letter-spacing:-0.01em;margin-top:1px;}
+  .sk-cat{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:15px;font-weight:600;letter-spacing:-0.01em;margin-bottom:7px;}
+  .sk-dots{display:inline-flex;gap:4px;flex:none;}
+  .sk-dots i{width:7px;height:7px;border-radius:50%;background:#dcdcd8;}
+  .sk-dots i.on{background:#111;}
+  .sk-items{font-size:12.5px;line-height:1.6;color:#404040;}
+  .sk-row{margin-bottom:11px;}
+
+  /* page 2 : about + project impact (PAR) */
+  .p2-head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #e4e4e0;padding-bottom:14px;margin-bottom:24px;}
+  .p2-name{font-size:19px;font-weight:400;letter-spacing:-0.01em;}
+  .p2-tag{font-size:12px;color:#9a9a96;letter-spacing:.12em;text-transform:uppercase;}
+  .p2-copy{font-size:18px;font-weight:600;letter-spacing:-0.01em;line-height:1.45;color:#111;margin:2px 0 24px;}
+  .about-text{font-size:13px;line-height:1.72;color:#2a2a2a;}
+  .about-p{margin:0 0 11px;}
+  .about-p:last-child{margin-bottom:0;}
+  .str{font-size:12.5px;line-height:1.55;color:#404040;margin-bottom:9px;}
+  .str:last-child{margin-bottom:0;}
+  .str b{color:#111;font-weight:600;}
+  .pd{margin-bottom:20px;break-inside:avoid;}
+  .pd:last-child{margin-bottom:0;}
+  .pd-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;}
+  .pd-title{font-size:16px;font-weight:600;letter-spacing:-0.01em;}
+  .pd-meta{font-size:12px;color:#9a9a96;white-space:nowrap;}
+  .pd-stack{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 10px;}
+  .pd-stack span{font-size:11px;color:#404040;background:#f2f2ef;border-radius:4px;padding:2px 8px;}
+  .par{display:grid;grid-template-columns:76px 1fr;gap:5px 12px;font-size:12.5px;line-height:1.5;}
+  .par b{font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:#9a9a96;font-weight:600;padding-top:2px;}
+  .par span{color:#333;}
+  .page2{break-before:page;}
+
+  /* carousel */
+  .carousel{overflow:hidden;width:100%;margin-top:40px;}
+  .track{display:flex;gap:56px;align-items:flex-start;transition:transform .45s cubic-bezier(.4,0,.2,1);}
+  .track > .paper{flex:0 0 auto;transition:opacity .45s ease;}
+  .carousel-nav{display:flex;justify-content:center;align-items:center;gap:18px;margin-top:26px;}
+  .arrow{width:44px;height:44px;border-radius:999px;border:1px solid #dcdcd8;background:#fff;font-size:20px;line-height:1;color:#111;display:flex;align-items:center;justify-content:center;padding:0;}
+  .arrow:disabled{opacity:.3;cursor:default;}
+  .dots{display:flex;gap:8px;}
+  .dot{width:8px;height:8px;border-radius:50%;background:#cfcfca;border:none;padding:0;cursor:pointer;}
+  .dot.active{background:#111;}
+
+  .stage{padding:56px 64px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#111;}
+  .topbar{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:8px;max-width:2560px;flex-wrap:wrap;}
+  .controls{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+
+  @page{size:A4;margin:10mm;}
+  @media print{
+    html,body{background:#fff;}
+    .stage{padding:0;}
+    .topbar{display:none;}
+    .carousel{overflow:visible;margin-top:0 !important;}
+    .track{transform:none !important;display:block;}
+    .track > .paper{opacity:1 !important;}
+    .carousel-nav{display:none;}
+    .paper{box-shadow:none;width:auto;min-height:auto;padding:0;}
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="topbar">
+    <div>
+      <div class="toolbar-label" style="margin-bottom:6px;">Resume · 이력서</div>
+      <div style="font-size:26px;font-weight:600;letter-spacing:-0.01em;">웹 개발자 이력서 · 박세은</div>
+    </div>
+    <div class="controls">
+      <span class="toolbar-label">Language</span>
+      <div class="seg" id="langSeg">
+        <button data-lang="ko">한국어</button>
+        <button data-lang="en">English</button>
+        <button data-lang="ja">日本語</button>
+      </div>
+      <button class="off" style="border:1px solid #dcdcd8;margin-left:8px;" onclick="window.print()">PDF 저장</button>
+    </div>
+  </div>
+
+  <div class="carousel" id="carousel">
+    <div class="track" id="track">
+      <div class="paper" id="paper"></div>
+      <div class="paper page2" id="paper2"></div>
+      <div class="paper page2" id="paper3"></div>
+    </div>
+  </div>
+  <div class="carousel-nav" id="carouselNav">
+    <button class="arrow" id="prevBtn" aria-label="이전">‹</button>
+    <div class="dots" id="dots"></div>
+    <button class="arrow" id="nextBtn" aria-label="다음">›</button>
+  </div>
+</div>
+
+<script>
+const DATA = {
+  ko: {
+    name: "박세은", title: "Web Developer · 7년차",
+    contact: [
+      { text: "chappse6@gmail.com", href: "mailto:chappse6@gmail.com" },
+      { text: "github.com/chappse6", href: "https://github.com/chappse6?tab=repositories" },
+      { text: "parse.tistory.com", href: "https://parse.tistory.com/" }
+    ],
+    labels: { experience: "경력 · 프로젝트", education: "학력", certifications: "자격", skills: "스킬" },
+    career: [
+      { org: "코나아이", period: "2022.09 – 현재", place: "서울", role: "백엔드 · 웹 개발자" },
+      { org: "youisoft", period: "2018.11 – 2021.08", place: "도쿄", role: "웹 개발자" }
+    ],
+    projects: [
+      { company: "코나아이", period: "2025.08 – 2025.11", title: "가맹점 포탈 · 전자계약 간소화", desc: "포탈–전자계약 시스템 연동과 OCR 서류 자동화로 가입·계약 시간을 30분→10분으로 단축, 월평균 가입자 약 8배 증가. Redis 세션 중앙화·PASS 본인인증 연동." },
+      { company: "코나아이", period: "2025.01 – 2025.03", title: "메뉴 스크래핑 이관 시스템", desc: "쿠콘 스크래핑 API로 외부 배달 플랫폼 메뉴를 자사 DB 스펙으로 자동 변환·검증. 백오피스 호출 기능 및 상세 예외 처리 구현." },
+      { company: "코나아이", period: "2022.11 – 현재", title: "통합 계정 인증 서비스 · 팀 리더", desc: "MSA 8개 포탈 계정 통합, 100만 건 개인정보 이력 처리. OWASP·ISMS-P 대응, JaCoCo 커버리지 80%+ 달성. 통합 로그인·AI 이상감지 페이지 개발. 3인 개발팀 리딩." },
+      { company: "youisoft", period: "2019.12 – 2021.08", title: "소비자 환원 시스템", desc: "카드사 포인트 환원 정보 관리 기능 설계·개발 및 유지보수. 단위·통합테스트 수행, 장애 지원." }
+    ],
+    education: [
+      { period: "2012.03 – 2018.02", place: "대전", degree: "신소재공학 학사 (3.35/4.5)", org: "한밭대학교" },
+      { period: "2017.12 – 2018.07", place: "서울", degree: "하이브리드 SW 전문가과정 28기", org: "JSL 인재개발원" }
+    ],
+    certifications: [
+      { year: "2026", name: "AWS Certified Developer – Associate", org: "Amazon Web Services (AWS)" },
+      { year: "2026.05", name: "Model Context Protocol: Advanced Topics", org: "Anthropic" },
+      { year: "2018", name: "정보처리기사 · 정보처리산업기사", org: "한국산업인력공단" }
+    ],
+    skills: [
+      { category: "언어 · 백엔드", items: ["Java", "Kotlin", "Spring Boot", "JPA", "QueryDSL"], level: 5 },
+      { category: "데이터베이스", items: ["Oracle", "MySQL", "MariaDB", "Redis"], level: 4 },
+      { category: "프론트엔드", items: ["JavaScript", "jQuery", "Thymeleaf", "React"], level: 3 },
+      { category: "DevOps · 협업", items: ["AWS(EC2·RDS)", "Linux", "Git", "GitLab", "Jira", "Jenkins"], level: 3 },
+      { category: "AI 활용", items: ["Claude Code", "MCP"], level: 4 }
+    ]
+  },
+  en: {
+    name: "Se-eun Park", title: "Java · Spring Backend Web Developer · 7 yrs",
+    contact: [
+      { text: "chappse6@gmail.com", href: "mailto:chappse6@gmail.com" },
+      { text: "github.com/chappse6", href: "https://github.com/chappse6?tab=repositories" },
+      { text: "parse.tistory.com", href: "https://parse.tistory.com/" }
+    ],
+    labels: { experience: "Experience · Projects", education: "Education", certifications: "Certifications", skills: "Skills" },
+    career: [
+      { org: "Konai", period: "2022.09 – Present", place: "Seoul", role: "Backend · Web Developer" },
+      { org: "youisoft", period: "2018.11 – 2021.08", place: "Tokyo", role: "Web Developer" }
+    ],
+    projects: [
+      { company: "Konai", period: "2025.08 – 2025.11", title: "Merchant Portal · e-Contract Flow", desc: "Integrated portal and e-contract systems with OCR document automation, cutting signup/contract time from 30 to 10 min and growing monthly signups ~8×. Centralized Redis sessions, added PASS identity verification." },
+      { company: "Konai", period: "2025.01 – 2025.03", title: "Menu Scraping Migration System", desc: "Auto-converted and validated external delivery-platform menus into our DB spec via the Coocon scraping API. Built back-office trigger and detailed error handling." },
+      { company: "Konai", period: "2022.11 – Present", title: "Unified Account Auth · Team Lead", desc: "Unified accounts across 8 MSA portals, processing 1M+ personal-data records. Handled OWASP · ISMS-P compliance, reached 80%+ JaCoCo coverage. Built unified login and AI anomaly-detection pages. Led a 3-person dev team." },
+      { company: "youisoft", period: "2019.12 – 2021.08", title: "Consumer Rebate System", desc: "Designed, developed, and maintained card-issuer point-rebate management features. Wrote unit/integration tests and provided incident support." }
+    ],
+    education: [
+      { period: "2012.03 – 2018.02", place: "Daejeon", degree: "B.S. Materials Engineering (3.35/4.5)", org: "Hanbat National Univ." },
+      { period: "2017.12 – 2018.07", place: "Seoul", degree: "Hybrid Software Expert Course #28", org: "JSL Academy" }
+    ],
+    certifications: [
+      { year: "2026", name: "AWS Certified Developer – Associate", org: "Amazon Web Services (AWS)" },
+      { year: "2026.05", name: "Model Context Protocol: Advanced Topics", org: "Anthropic" },
+      { year: "2018", name: "Engineer · Industrial Engineer Info. Processing", org: "HRDK" }
+    ],
+    skills: [
+      { category: "Languages · Backend", items: ["Java", "Kotlin", "Spring Boot", "JPA", "QueryDSL"], level: 5 },
+      { category: "Databases", items: ["Oracle", "MySQL", "MariaDB", "Redis"], level: 4 },
+      { category: "Frontend", items: ["JavaScript", "jQuery", "Thymeleaf", "React"], level: 3 },
+      { category: "DevOps · Collab", items: ["AWS(EC2·RDS)", "Linux", "Git", "GitLab", "Jira", "Jenkins"], level: 3 },
+      { category: "AI Tooling", items: ["Claude Code", "MCP"], level: 4 }
+    ]
+  },
+  ja: {
+    name: "パク・セウン", title: "Java · Spring バックエンド開発者 · 7年",
+    contact: [
+      { text: "chappse6@gmail.com", href: "mailto:chappse6@gmail.com" },
+      { text: "github.com/chappse6", href: "https://github.com/chappse6?tab=repositories" },
+      { text: "parse.tistory.com", href: "https://parse.tistory.com/" }
+    ],
+    labels: { experience: "職務経歴 · プロジェクト", education: "学歴", certifications: "資格", skills: "スキル" },
+    career: [
+      { org: "コナアイ", period: "2022.09 – 現在", place: "ソウル", role: "バックエンド · Web開発" },
+      { org: "youisoft", period: "2018.11 – 2021.08", place: "東京", role: "Web開発者" }
+    ],
+    projects: [
+      { company: "コナアイ", period: "2025.08 – 2025.11", title: "加盟店ポータル · 電子契約の簡素化", desc: "ポータルと電子契約システムを連携し、OCRで書類入力を自動化。加入・契約時間を30分→10分に短縮し、月平均加入者を約8倍に。Redisセッション集中化・PASS本人認証連携。" },
+      { company: "コナアイ", period: "2025.01 – 2025.03", title: "メニュースクレイピング移行システム", desc: "Cooconスクレイピングapiで外部デリバリーのメニューを自社DB仕様へ自動変換・検証。バックオフィス呼び出し機能と詳細な例外処理を実装。" },
+      { company: "コナアイ", period: "2022.11 – 現在", title: "統合アカウント認証 · チームリーダー", desc: "MSA 8ポータルのアカウントを統合し、100万件の個人情報履歴を処理。OWASP · ISMS-P対応、JaCoCoカバレッジ80%+達成。統合ログイン・AI異常検知画面を開発。3名の開発チームをリード。" },
+      { company: "youisoft", period: "2019.12 – 2021.08", title: "消費者還元システム", desc: "カード会社からの還元ポイント情報の管理機能を設計・開発・保守。単体/結合テストの実施、障害対応。" }
+    ],
+    education: [
+      { period: "2012.03 – 2018.02", place: "大田", degree: "新素材工学 学士 (3.35/4.5)", org: "ハンバット大学" },
+      { period: "2017.12 – 2018.07", place: "ソウル", degree: "ハイブリッドSW専門家課程 28期", org: "JSL人材開発院" }
+    ],
+    certifications: [
+      { year: "2026", name: "AWS Certified Developer – Associate", org: "Amazon Web Services (AWS)" },
+      { year: "2026.05", name: "Model Context Protocol: Advanced Topics", org: "Anthropic" },
+      { year: "2018", name: "情報処理技士 · 情報処理産業技士", org: "HRDK" }
+    ],
+    skills: [
+      { category: "言語 · バックエンド", items: ["Java", "Kotlin", "Spring Boot", "JPA", "QueryDSL"], level: 5 },
+      { category: "データベース", items: ["Oracle", "MySQL", "MariaDB", "Redis"], level: 4 },
+      { category: "フロントエンド", items: ["JavaScript", "jQuery", "Thymeleaf", "React"], level: 3 },
+      { category: "DevOps · 協業", items: ["AWS(EC2·RDS)", "Linux", "Git", "GitLab", "Jira", "Jenkins"], level: 3 },
+      { category: "AI活用", items: ["Claude Code", "MCP"], level: 4 }
+    ]
+  }
+};
+
+const DETAIL = {
+  ko: {
+    tag: "Details", copy: "문제를 정의하고, 해결책을 고민하고, 수치로 증명하는 개발자",
+    aboutLabel: "자기소개 · About", projLabel: "프로젝트 성과 · Project Impact",
+    strengthsLabel: "핵심 역량 · Core Strengths",
+    strengths: [
+      { k: "비즈니스 임팩트", d: "가입 프로세스 재설계로 처리 시간 30분→10분, 월평균 가입자 약 8배 증가." },
+      { k: "시스템 통합 · 보안", d: "8개 포털 계정 통합·100만 건 개인정보 이력 처리, OWASP·ISMS-P 대응." },
+      { k: "품질 자동화 · 리딩", d: "JaCoCo 커버리지 80%+ 달성, 재사용 가이드라인 정립, 3인 개발팀 리딩." },
+      { k: "자발적 개선 · AI 활용", d: "컴포넌트 health-check 웹앱 자체 개발, AI(Claude Code·MCP)로 QA·회귀 영향도 분석 적용." }
+    ],
+    parLabels: { p: "Problem", a: "Approach", c: "Action", r: "Result" },
+    about: [
+      "7년 차 Java/Spring 기반 웹 개발자로, 서울과 도쿄에서 근무하며 글로벌 협업 환경과 다양한 백오피스 시스템을 경험해왔습니다. Java, Spring Boot, JPA, Oracle, MySQL, JavaScript, Git 등 핵심 기술을 기반으로, **서비스의 안정성 향상과 운영 품질 개선**을 위한 프로젝트를 주도해왔습니다.",
+      "비즈니스 문제를 기술로 해결하는 데 집중합니다. 분리되어 있던 **가맹점 포탈과 사내 전자계약 시스템 간 연동을 개발**하고, OCR 기술로 서류 입력을 자동화하여 가입 절차를 간소화했습니다. 그 결과 가입 및 계약 시간을 30분에서 10분으로 단축했으며, **월평균 가입자가 약 8배 증가**하여 비즈니스 성장에 기여했습니다.",
+      "MSA 환경에서 분산되어 있던 계정 시스템을 통합하는 **통합계정 서비스**를 개발하고, 독립적인 8개 연동 포털의 계정을 하나의 시스템으로 통합하며 **100만 건의 개인정보 사용이력 데이터 처리**를 경험했습니다. OWASP 보안 표준 기반 웹 취약점 대응과 **ISMS-P 인증 대응(인증·인가 및 접근 제어 고도화)**까지 수행하여 보안 품질을 높였습니다. 이 과정에서 Kotlin, QueryDSL 등의 기술을 자발적으로 학습하고 현업에 적용하였으며, 3인 개발팀의 리더로서 일정 관리와 품질 확보를 주도했습니다.",
+      "QA 리소스 부족 문제 해결을 위해 **테스트 커버리지 도입과 코드 품질 자동화**를 제안하고, JaCoCo를 적용하여 담당 프로젝트 내의 **80% 이상의 커버리지를 달성**, 조직 내 재사용 가능한 **가이드라인을 정립**한 경험도 있습니다.",
+      "평소에 어떻게 하면 팀 성장에 이바지할 수 있을까 고민합니다. 새롭게 합류한 회사에서 온보딩 기간에 각 서비스의 health check를 위해 하나하나 SSH로 접속해 커맨드로 확인해야 하는 불편함을 파악했습니다. 이에 대한 해결책으로 **전체 컴포넌트의 health check 기능을 제공하는 웹 애플리케이션을 개발**해 한 곳에서 모니터링할 수 있도록 하고, 팀원들과 공유하여 좋은 평가를 받았습니다.",
+      "최근에는 **AI 도구(Claude Code·MCP)를 시스템 사고 파트너로 활용**해 도메인 검증·QA 시나리오·회귀 영향도 분석에 적용하고, 사내 개발 워크플로우에 통합하는 작업을 주도하고 있습니다. 이러한 경험을 통해 단순한 개발을 넘어 **품질 시스템 구축과 운영 최적화**, 그리고 **조직 내 실질적 개선을 이끄는 문제 해결형 개발자**로 성장해왔습니다."
+    ],
+    projects: [
+      { title: "가맹점 포탈 · 전자계약 간소화", meta: "2025.08 – 2025.11 · 코나아이",
+        stack: ["Java", "Spring Boot 2.1.8", "Redis", "Oracle", "jQuery"],
+        p: "가맹점 가입이 포탈·전자계약 시스템 분리로 평균 30분 소요, 중도이탈이 발생했습니다.",
+        a: "Redis 세션 중앙화와 개별 연동을 비교하고, OCR 도입으로 수기 입력을 제거하는 방향을 택했습니다.",
+        c: "시스템 연동 API·모빌리언스 PASS 본인인증을 개발하고, 사업자등록증 OCR 자동추출과 가입 7→3단계 재설계를 진행했습니다.",
+        r: "가입·계약 시간 30분 → 10분, 월평균 가입자 약 8배 증가." },
+      { title: "통합 계정 인증 서비스 · 팀 리더", meta: "2022.11 – 현재 · 코나아이",
+        stack: ["Java", "Kotlin", "Spring Boot", "JPA", "QueryDSL", "Oracle"],
+        p: "MSA 환경에서 계정 시스템이 8개 포털로 분산돼 개인정보 관리·보안 일관성이 부족했습니다.",
+        a: "통합 인증 서버를 설계(ERD·JPA·QueryDSL)하고 인증·인가·접근제어 고도화 방향을 결정했습니다.",
+        c: "통합 계정 API 개발, 8개 포털 연동 가이드·기술 커뮤니케이션, OWASP·ISMS-P 대응, JaCoCo 도입을 수행했습니다.",
+        r: "8개 포털 계정 통합·100만 건 개인정보 이력 처리, 비즈니스 로직 커버리지 80%+ 달성, 3인 개발팀 리딩." },
+      { title: "메뉴 스크래핑 이관 시스템", meta: "2025.01 – 2025.03 · 코나아이",
+        stack: ["Java", "Spring Boot 2.1.8"],
+        p: "외부 배달 플랫폼 메뉴를 수기로 이관하며 오류와 시간 소모가 컸습니다.",
+        a: "쿠콘 스크래핑 API 연동과 자사 DB 스펙 자동 변환·검증 체계를 설계했습니다.",
+        c: "데이터 수신·변환·유효성 검증 로직, 백오피스 호출 기능, 파싱 실패 시 상세 에러 처리를 구현했습니다.",
+        r: "메뉴 이관 자동화로 수작업·입력 오류 제거, 운영 효율 개선." },
+      { title: "소비자 환원 시스템", meta: "2019.12 – 2021.08 · youisoft (도쿄)",
+        stack: ["Java", "Struts2", "MyBatis", "MySQL", "Jenkins"],
+        p: "카드사별로 환원되는 포인트 정보를 관리하는 체계가 부재했습니다.",
+        a: "고객별 포인트 관리 기능을 설계하고 단위·통합테스트 기반의 안정성 확보를 우선했습니다.",
+        c: "고객별 포인트 정보 관리 기능 개발, 테스트 작성, 유지보수·장애 지원을 담당했습니다.",
+        r: "카드사 연동 포인트 조회 기능의 안정적 운영." }
+    ]
+  },
+  en: {
+    tag: "Details", copy: "A developer who defines the problem, weighs the solution, and proves it with numbers",
+    aboutLabel: "About", projLabel: "Project Impact",
+    strengthsLabel: "Core Strengths",
+    strengths: [
+      { k: "Business impact", d: "Redesigned signup to cut processing time 30 → 10 min and grow monthly signups ~8×." },
+      { k: "Integration · Security", d: "Unified 8 portals, processed 1M+ personal-data records, handled OWASP · ISMS-P." },
+      { k: "Quality automation · Leadership", d: "Reached 80%+ JaCoCo coverage, set reusable guidelines, led a 3-person team." },
+      { k: "Initiative · AI tooling", d: "Built a component health-check web app; applied AI (Claude Code · MCP) to QA and regression-impact analysis." }
+    ],
+    parLabels: { p: "Problem", a: "Approach", c: "Action", r: "Result" },
+    about: [
+      "A web developer with 7 years in Java/Spring, having worked in Seoul and Tokyo across global collaboration and diverse back-office systems. Built on core tech — Java, Spring Boot, JPA, Oracle, MySQL, JavaScript, Git — I've led projects focused on **service stability and operational quality**.",
+      "I focus on solving business problems with engineering. I **integrated a merchant portal with the in-house e-contract system** and automated document entry with OCR to simplify signup — cutting signup/contract time from 30 to 10 minutes and driving an **~8× increase in monthly signups**.",
+      "I built a **unified account service** to consolidate account systems scattered across an MSA environment, merging 8 independent portals into one and handling **1M+ personal-data usage records**. I carried out OWASP-based web vulnerability remediation and **ISMS-P compliance (hardening authn/authz and access control)**. Along the way I self-studied Kotlin and QueryDSL and applied them in production, leading a 3-person team on schedule and quality.",
+      "To address a shortage of QA resources, I proposed **test coverage and code-quality automation**, applied JaCoCo to reach **80%+ coverage**, and **established reusable guidelines** for the organization.",
+      "I regularly think about how to contribute to team growth. During onboarding at a new company, I noticed the pain of SSHing into each service one by one to run health-check commands. As a solution I **built a web app that health-checks all components** in one place, shared it with the team, and received strong feedback.",
+      "Recently I **use AI tools (Claude Code · MCP) as thinking partners** for domain validation, QA scenarios, and regression-impact analysis, leading their integration into our internal dev workflow. Through these experiences I've grown beyond writing code into a **problem-solving developer who builds quality systems, optimizes operations, and drives real organizational improvement**."
+    ],
+    projects: [
+      { title: "Merchant Portal · e-Contract Flow", meta: "2025.08 – 2025.11 · Konai",
+        stack: ["Java", "Spring Boot 2.1.8", "Redis", "Oracle", "jQuery"],
+        p: "Merchant signup took ~30 min because the portal and e-contract systems were split, causing drop-off.",
+        a: "Compared Redis-centralized sessions vs. point-to-point integration, and chose OCR to remove manual entry.",
+        c: "Built the integration API and Mobilians PASS identity verification, added business-license OCR extraction, redesigned signup 7 → 3 steps.",
+        r: "Signup/contract time 30 → 10 min; monthly signups up ~8×." },
+      { title: "Unified Account Auth · Team Lead", meta: "2022.11 – Present · Konai",
+        stack: ["Java", "Kotlin", "Spring Boot", "JPA", "QueryDSL", "Oracle"],
+        p: "Accounts were fragmented across 8 MSA portals, weakening personal-data governance and security consistency.",
+        a: "Designed a unified auth server (ERD · JPA · QueryDSL) and set the direction for hardening authn/authz and access control.",
+        c: "Built the unified account API, led integration guides for 8 portals, handled OWASP · ISMS-P, and introduced JaCoCo.",
+        r: "Unified 8 portals, processed 1M+ personal-data records, reached 80%+ business-logic coverage, led a 3-person team." },
+      { title: "Menu Scraping Migration System", meta: "2025.01 – 2025.03 · Konai",
+        stack: ["Java", "Spring Boot 2.1.8"],
+        p: "External delivery-platform menus were migrated manually, causing errors and wasted time.",
+        a: "Designed automated conversion/validation from the Coocon scraping API into our DB spec.",
+        c: "Implemented data ingestion, conversion, validation logic, a back-office trigger, and detailed parse-failure error handling.",
+        r: "Automated menu migration, removing manual work and input errors and improving operations." },
+      { title: "Consumer Rebate System", meta: "2019.12 – 2021.08 · youisoft (Tokyo)",
+        stack: ["Java", "Struts2", "MyBatis", "MySQL", "Jenkins"],
+        p: "There was no system to manage rebate-point data returned per card issuer.",
+        a: "Designed per-customer point management, prioritizing stability via unit/integration tests.",
+        c: "Developed the point-management feature, wrote tests, and handled maintenance and incident support.",
+        r: "Stable operation of card-issuer rebate-point lookups." }
+    ]
+  },
+  ja: {
+    tag: "Details", copy: "課題を定義し、解決策を検討し、数値で証明する開発者",
+    aboutLabel: "自己紹介 · About", projLabel: "プロジェクト成果 · Project Impact",
+    strengthsLabel: "コア・スキル · Core Strengths",
+    strengths: [
+      { k: "ビジネスインパクト", d: "加入プロセスの再設計で処理時間を30分→10分に短縮、月平均加入者を約8倍に。" },
+      { k: "統合 · セキュリティ", d: "8ポータル統合・100万件の個人情報履歴を処理、OWASP・ISMS-P対応。" },
+      { k: "品質自動化 · リード", d: "JaCoCoカバレッジ80%+達成、再利用ガイドライン整備、3名チームをリード。" },
+      { k: "自発的改善 · AI活用", d: "コンポーネントhealth checkのwebアプリを自作、AI(Claude Code·MCP)をQA・回帰影響分析に適用。" }
+    ],
+    parLabels: { p: "Problem", a: "Approach", c: "Action", r: "Result" },
+    about: [
+      "7年目のJava/Springベースのweb開発者として、ソウルと東京で勤務し、グローバル協業環境と多様なバックオフィスシステムを経験してきました。Java、Spring Boot、JPA、Oracle、MySQL、JavaScript、Gitなどの主要技術を基盤に、**サービスの安定性向上と運用品質の改善**に向けたプロジェクトを主導してきました。",
+      "ビジネス課題を技術で解決することに注力しています。分離していた**加盟店ポータルと社内電子契約システムの連携を開発**し、OCRで書類入力を自動化して加入手続きを簡素化しました。その結果、加入・契約時間を30分から10分に短縮し、**月平均加入者を約8倍に増加**させ、事業成長に貢献しました。",
+      "MSA環境で分散していたアカウントシステムを統合する**統合アカウントサービス**を開発し、独立した8つの連携ポータルのアカウントを一つに統合、**100万件の個人情報利用履歴データの処理**を経験しました。OWASP標準に基づくweb脆弱性対応と**ISMS-P認証対応(認証・認可およびアクセス制御の高度化)**まで実施し、セキュリティ品質を高めました。この過程でKotlin、QueryDSLなどを自発的に学習して現場に適用し、3名の開発チームのリーダーとして進行と品質確保を主導しました。",
+      "QAリソース不足の解決のため、**テストカバレッジ導入とコード品質の自動化**を提案し、JaCoCoを適用して担当プロジェクトで**80%以上のカバレッジを達成**、組織で再利用可能な**ガイドラインを整備**した経験もあります。",
+      "常にチームの成長にどう貢献できるかを考えています。新しく参加した会社のオンボーディング期間に、各サービスのhealth checkのために一つひとつSSHで接続してコマンドで確認する不便さを把握しました。その解決策として**全コンポーネントのhealth check機能を提供するwebアプリケーションを開発**し、一箇所で監視できるようにしてチームと共有し、高い評価を得ました。",
+      "最近は**AIツール(Claude Code·MCP)をシステム思考のパートナーとして活用**し、ドメイン検証・QAシナリオ・回帰影響分析に適用、社内開発ワークフローへの統合を主導しています。こうした経験を通じて、単なる開発を超えて**品質システムの構築と運用最適化、そして組織内の実質的な改善を導く問題解決型の開発者**として成長してきました。"
+    ],
+    projects: [
+      { title: "加盟店ポータル · 電子契約の簡素化", meta: "2025.08 – 2025.11 · コナアイ",
+        stack: ["Java", "Spring Boot 2.1.8", "Redis", "Oracle", "jQuery"],
+        p: "加盟店の加入がポータルと電子契約システムの分離で平均30分かかり、離脱が発生していました。",
+        a: "Redisセッション集中化と個別連携を比較し、OCR導入で手入力を排除する方針を選びました。",
+        c: "システム連携APIとモビリアンスPASS本人認証を開発し、事業者登録証のOCR自動抽出と加入7→3ステップの再設計を行いました。",
+        r: "加入・契約時間 30分 → 10分、月平均加入者 約8倍増加。" },
+      { title: "統合アカウント認証 · チームリーダー", meta: "2022.11 – 現在 · コナアイ",
+        stack: ["Java", "Kotlin", "Spring Boot", "JPA", "QueryDSL", "Oracle"],
+        p: "MSA環境でアカウントが8ポータルに分散し、個人情報管理とセキュリティの一貫性が不足していました。",
+        a: "統合認証サーバを設計(ERD·JPA·QueryDSL)し、認証・認可・アクセス制御の高度化方針を決めました。",
+        c: "統合アカウントAPIを開発し、8ポータル連携ガイド・技術コミュニケーション、OWASP·ISMS-P対応、JaCoCo導入を実施しました。",
+        r: "8ポータル統合・100万件の個人情報履歴処理、ビジネスロジックのカバレッジ80%+達成、3名チームをリード。" },
+      { title: "メニュースクレイピング移行システム", meta: "2025.01 – 2025.03 · コナアイ",
+        stack: ["Java", "Spring Boot 2.1.8"],
+        p: "外部デリバリーのメニューを手作業で移行しており、ミスと時間の消費が大きい状態でした。",
+        a: "Cooconスクレイピングapi連携と自社DB仕様への自動変換・検証の仕組みを設計しました。",
+        c: "データ受信・変換・バリデーションロジック、バックオフィス呼び出し機能、パース失敗時の詳細エラー処理を実装しました。",
+        r: "メニュー移行の自動化で手作業・入力ミスを排除し、運用効率を改善。" },
+      { title: "消費者還元システム", meta: "2019.12 – 2021.08 · youisoft (東京)",
+        stack: ["Java", "Struts2", "MyBatis", "MySQL", "Jenkins"],
+        p: "カード会社ごとに還元されるポイント情報を管理する仕組みが不在でした。",
+        a: "顧客別のポイント管理機能を設計し、単体・結合テストによる安定性確保を優先しました。",
+        c: "顧客別ポイント情報管理機能の開発、テスト作成、保守・障害対応を担当しました。",
+        r: "カード会社連携のポイント照会機能を安定運用。" }
+    ]
+  }
+};
+
+const FONTS = {
+  pretendard: "'Helvetica Neue', Helvetica, 'Pretendard Variable', Pretendard, sans-serif",
+  noto: "'Helvetica Neue', Helvetica, 'Noto Sans KR', sans-serif",
+  spoqa: "'Helvetica Neue', Helvetica, 'Spoqa Han Sans Neo', sans-serif"
+};
+
+let state = { lang: "ko", font: "pretendard" };
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c]));
+
+function render() {
+  const t = DATA[state.lang];
+  const paper = document.getElementById("paper");
+  paper.style.fontFamily = FONTS[state.font];
+
+  const contact = t.contact.map(c => `<a href="${esc(c.href)}" target="_blank" rel="noopener">${esc(c.text)}</a>`).join("");
+
+  // group projects by company (order preserved), pull company meta from career
+  const groups = [];
+  t.projects.forEach(p => {
+    let g = groups.find(g => g.company === p.company);
+    if (!g) { g = { company: p.company, items: [] }; groups.push(g); }
+    g.items.push(p);
+  });
+  const experience = groups.map(g => {
+    const c = t.career.find(c => c.org === g.company) || {};
+    const meta = [c.period, c.place].filter(Boolean).join("  ·  ");
+    const items = g.items.map(p => `
+      <div class="proj">
+        <div class="proj-period">${esc(p.period)}</div>
+        <div>
+          <div class="proj-title">${esc(p.title)}</div>
+          <div class="proj-desc">${esc(p.desc)}</div>
+        </div>
+      </div>`).join("");
+    return `
+      <div class="grp">
+        <div class="grp-head"><span class="grp-co">${esc(g.company)}</span><span class="grp-meta">${esc(meta)}</span></div>
+        ${items}
+      </div>`;
+  }).join("");
+
+  const education = t.education.map(ed => `
+    <div style="margin-bottom:14px;">
+      <div class="meta-row"><span>${esc(ed.period)}</span><span>${esc(ed.place)}</span></div>
+      <div class="head-row"><span class="ed-degree">${esc(ed.degree)}</span><span class="ed-org">${esc(ed.org)}</span></div>
+    </div>`).join("");
+
+  const certifications = t.certifications.map(c => `
+    <div style="margin-bottom:11px;">
+      <div class="meta-row"><span>${esc(c.year)}</span><span>${esc(c.org)}</span></div>
+      <div class="cert-name">${esc(c.name)}</div>
+    </div>`).join("");
+
+  const dots = n => `<span class="sk-dots">${Array.from({length:5},(_,i)=>`<i class="${i<n?"on":""}"></i>`).join("")}</span>`;
+  const skills = t.skills.map(s => `
+    <div class="sk-row">
+      <div class="sk-cat"><span>${esc(s.category)}</span>${s.level?dots(s.level):""}</div>
+      <div class="sk-items">${esc(s.items.join("  ·  "))}</div>
+    </div>`).join("");
+
+  const secHead = label => `<div class="rule" style="margin-bottom:7px;"></div>
+    <div class="sec-label" style="margin-bottom:13px;">${esc(label)}</div>`;
+
+  paper.innerHTML = `
+    <div class="contact-row">${contact}</div>
+    <div class="hero">
+      <div class="photo"><img src="assets/profile.jpg" alt="${esc(t.name)}"></div>
+      <div>
+        <div class="name">${esc(t.name)}</div>
+        <div class="title">${esc(t.title)}</div>
+      </div>
+    </div>
+    <div class="rule" style="margin:22px 0 7px;"></div>
+    <div class="sec-label" style="margin-bottom:15px;">${esc(t.labels.experience)}</div>
+    ${experience}
+    <div class="cols">
+      <div>
+        ${secHead(t.labels.education)}${education}
+        <div class="rule" style="margin:24px 0 7px;"></div>
+        <div class="sec-label" style="margin-bottom:13px;">${esc(t.labels.certifications)}</div>
+        ${certifications}
+      </div>
+      <div>
+        ${secHead(t.labels.skills)}${skills}
+      </div>
+    </div>`;
+
+  // ---- page 2 : about + project impact (PAR) ----
+  const d = DETAIL[state.lang];
+  const p2 = document.getElementById("paper2");
+  p2.style.fontFamily = FONTS[state.font];
+  const details = d.projects.map(pr => `
+    <div class="pd">
+      <div class="pd-head"><span class="pd-title">${esc(pr.title)}</span><span class="pd-meta">${esc(pr.meta)}</span></div>
+      <div class="pd-stack">${pr.stack.map(s => `<span>${esc(s)}</span>`).join("")}</div>
+      <div class="par">
+        <b>${esc(d.parLabels.p)}</b><span>${esc(pr.p)}</span>
+        <b>${esc(d.parLabels.a)}</b><span>${esc(pr.a)}</span>
+        <b>${esc(d.parLabels.c)}</b><span>${esc(pr.c)}</span>
+        <b>${esc(d.parLabels.r)}</b><span>${esc(pr.r)}</span>
+      </div>
+    </div>`).join("");
+  p2.innerHTML = `
+    <div class="p2-copy">${esc(d.copy)}</div>
+    <div class="rule" style="margin-bottom:7px;"></div>
+    <div class="sec-label" style="margin-bottom:13px;">${esc(d.aboutLabel)}</div>
+    <div class="about-text">${d.about.map(x => `<p class="about-p">${esc(x).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")}</p>`).join("")}</div>
+    <div class="rule" style="margin:26px 0 7px;"></div>
+    <div class="sec-label" style="margin-bottom:14px;">${esc(d.strengthsLabel)}</div>
+    <div>${d.strengths.map(s => `<div class="str"><b>${esc(s.k)}</b> · ${esc(s.d)}</div>`).join("")}</div>`;
+
+  const p3 = document.getElementById("paper3");
+  p3.style.fontFamily = FONTS[state.font];
+  p3.innerHTML = `
+    <div class="rule" style="margin-bottom:7px;"></div>
+    <div class="sec-label" style="margin-bottom:16px;">${esc(d.projLabel)}</div>
+    ${details}`;
+
+  document.querySelectorAll("#langSeg button").forEach(b => b.className = b.dataset.lang === state.lang ? "on" : "off");
+  document.documentElement.lang = state.lang;
+}
+
+document.getElementById("langSeg").addEventListener("click", e => {
+  if (e.target.dataset.lang) { state.lang = e.target.dataset.lang; render(); }
+});
+
+render();
+
+// ---- carousel ----
+const SLIDES = 3;
+let slide = 0;
+function layoutCarousel() {
+  const track = document.getElementById("track");
+  const carousel = document.getElementById("carousel");
+  const papers = [...track.children];
+  const gap = 56, vw = carousel.clientWidth;
+  let left = 0;
+  for (let i = 0; i < slide; i++) left += papers[i].offsetWidth + gap;
+  const w = papers[slide].offsetWidth;
+  track.style.transform = `translateX(${Math.round(vw / 2 - (left + w / 2))}px)`;
+  papers.forEach((p, i) => { p.style.opacity = i === slide ? "1" : "0.4"; p.style.cursor = i === slide ? "default" : "pointer"; });
+  document.querySelectorAll("#dots .dot").forEach((d, i) => d.classList.toggle("active", i === slide));
+  document.getElementById("prevBtn").disabled = slide === 0;
+  document.getElementById("nextBtn").disabled = slide === SLIDES - 1;
+}
+function goTo(i) { slide = Math.max(0, Math.min(SLIDES - 1, i)); layoutCarousel(); }
+(function initCarousel() {
+  const dots = document.getElementById("dots");
+  dots.innerHTML = Array.from({ length: SLIDES }, (_, i) => `<button class="dot" data-i="${i}"></button>`).join("");
+  dots.addEventListener("click", e => { if (e.target.dataset.i) goTo(+e.target.dataset.i); });
+  document.getElementById("prevBtn").addEventListener("click", () => goTo(slide - 1));
+  document.getElementById("nextBtn").addEventListener("click", () => goTo(slide + 1));
+  document.getElementById("track").addEventListener("click", e => {
+    const p = e.target.closest(".paper"); if (!p) return;
+    const idx = [...e.currentTarget.children].indexOf(p);
+    if (idx !== slide && !e.target.closest("a")) goTo(idx);
+  });
+  window.addEventListener("keydown", e => { if (e.key === "ArrowLeft") goTo(slide - 1); if (e.key === "ArrowRight") goTo(slide + 1); });
+  window.addEventListener("resize", layoutCarousel);
+  layoutCarousel();
+})();
+</script>
+</body>
+</html>
